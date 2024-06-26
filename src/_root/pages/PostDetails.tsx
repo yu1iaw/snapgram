@@ -12,10 +12,10 @@ import { GridPostList } from "@/components/shared/GridPostList";
 
 const PostDetails = () => {
   const { id } = useParams();
-  const { data: post, isPending } = useGetPostById(id || '');
+  const { data: post, isLoading } = useGetPostById(id || '');
   const { user } = useAuth();
   const { mutate: deletePost } = useDeletePost();
-  const { data: userPosts, isPending: isUserPostPending } = useGetUserPosts(post?.creator.$id);
+  const { data: userPosts, isLoading: isUserPostPending } = useGetUserPosts(post?.creator.$id);
   const navigate = useNavigate();
 
   const otherUserPosts = userPosts?.documents.filter(userPost => userPost.$id !== id);
@@ -28,7 +28,7 @@ const PostDetails = () => {
 
   return (
     <div className="post_details-container">
-      {isPending ? <Loader /> : (
+      {isLoading ? <Loader /> : (
         <div className="post_details-card">
           <img src={post?.imageUrl} alt="post" className="post_details-img" />
 

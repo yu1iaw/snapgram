@@ -6,7 +6,7 @@ import { useGetUsers } from "@/lib/react-query/queriesAndMutations";
 
 
 const AllUsers = () => {
-  const { data: creators, isPending, isError } = useGetUsers();
+  const { data: creators, isLoading, isError } = useGetUsers();
   const { toast } = useToast();
 
   if (isError) {
@@ -18,7 +18,7 @@ const AllUsers = () => {
     <div className="common-container">
       <div className="user-container">
         <h2 className="h3-bold md:h2-bold w-full text-left">All Users</h2>
-        {isPending && !creators ? (
+        {isLoading && !creators ? (
           <Loader />
         ) : (
             <ul className="user-grid">

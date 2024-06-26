@@ -20,7 +20,7 @@ const UpdateProfile = () => {
   const { id } = useParams();
   const { user, setUser } = useAuth();
   const { data: currentUser } = useGetUserById(id || '');
-  const { mutateAsync: updateUser, isPending: isPendingUpdate } = useUpdateUser();
+  const { mutateAsync: updateUser, isLoading: isPendingUpdate } = useUpdateUser();
   const { toast } = useToast();
   const navigate = useNavigate();
 

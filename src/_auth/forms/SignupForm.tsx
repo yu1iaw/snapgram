@@ -15,8 +15,8 @@ import { useAuth } from "@/context/AuthContext";
 
 const SignupForm = () => {
     const { checkAuthUser, isLoading: isUserLoading } = useAuth();
-    const {mutateAsync: createUserAccount, isPending: isCreatingAccount} = useCreateUserAccount();
-    const {mutateAsync: signInAccount, isPending: isSigningInUser} = useSignInAccount();
+    const {mutateAsync: createUserAccount, isLoading: isCreatingAccount} = useCreateUserAccount();
+    const {mutateAsync: signInAccount, isLoading: isSigningInUser} = useSignInAccount();
     const { toast } = useToast();
     const navigate = useNavigate();
 

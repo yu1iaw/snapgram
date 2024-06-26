@@ -11,9 +11,9 @@ export const PostStats = ({ post, userId }: { post: Models.Document, userId: str
     const [likes, setLikes] = useState(likesList);
     const [isSaved, setIsSaved] = useState(false);
     
-    const { mutate: likePost, isPending: isLikePending } = useLikePost();
-    const { mutate: savePost, isPending: isSavePending } = useSavePost();
-    const { mutate: deleteSavedPost, isPending: isDeleteSavedPending } = useDeleteSavedPost();
+    const { mutate: likePost, isLoading: isLikePending } = useLikePost();
+    const { mutate: savePost, isLoading: isSavePending } = useSavePost();
+    const { mutate: deleteSavedPost, isLoading: isDeleteSavedPending } = useDeleteSavedPost();
     const { data: currentUser } = useGetCurrentUser();
 
     const savedPostRecord = currentUser?.save.find(

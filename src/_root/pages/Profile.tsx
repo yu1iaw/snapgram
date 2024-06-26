@@ -14,12 +14,12 @@ import LikedPosts from "./LikedPosts";
 const Profile = () => {
   const { id } = useParams();
   const [isFollowed, setIsFollowed] = useState(() => !!localStorage.getItem(id || ''));
-  const { data: currentUser, isError, isPending } = useGetUserById(id || '');
+  const { data: currentUser, isError, isLoading } = useGetUserById(id || '');
   const { user } = useAuth();
   const { pathname } = useLocation();
 
 
-  if (isPending) {
+  if (isLoading) {
     return (
       <div className="w-full h-full flex-center">
         <Loader />
