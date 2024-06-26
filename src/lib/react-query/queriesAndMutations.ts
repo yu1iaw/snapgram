@@ -140,7 +140,6 @@ export const useGetPosts = () => {
         queryFn: getInfinitePosts,
         getNextPageParam: (lastPage) => {
             if (lastPage && !lastPage.documents.length) return null;
-
             const lastId = lastPage?.documents.at(-1)?.$id;
             return lastId;
         },

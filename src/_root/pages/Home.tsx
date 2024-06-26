@@ -8,8 +8,8 @@ import { useGetPosts, useGetUsers } from "@/lib/react-query/queriesAndMutations"
 
 
 const Home = () => {
-  const { data: creators, isPending: isUserLoading, isError: isErrorCreators } = useGetUsers(10);
-  const { data: posts, fetchNextPage, hasNextPage, isError: isErrorPosts, isPending: isPostLoading } = useGetPosts();
+  const { data: creators, isLoading: isUserLoading, isError: isErrorCreators } = useGetUsers(10);
+  const { data: posts, fetchNextPage, hasNextPage, isError: isErrorPosts, isLoading: isPostLoading } = useGetPosts();
   const shouldShowPosts = posts?.pages.every(item => !item?.documents.length);
   const { ref, inView } = useInView();
 
